@@ -10,9 +10,13 @@ returns a function that multiplies a float by multiplier
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
     """
     args: multiplier: float
-    return: inner: (multiplier: float) -> x: float
+    return: inner: (multiplier: float)
     """
     def inner(multiplier: float) -> float:
+        """
+        args: multiplier: float
+        return: x: float
+        """
         x: float = (multiplier * multiplier)
         return (x)
     return inner
