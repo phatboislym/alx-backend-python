@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
 module for type annotated function zoom_array
-takes list: Tuple[Any]
+takes lst of type List and factor of type int as params
+returns object of type List
 """
 
 from typing import List, Tuple
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
+    """
+    args: lst: Tuple
+        factor: int
+    return: zoomed_in: List
+    """
     zoomed_in: List = [
         item for item in lst
         for i in range(factor)
