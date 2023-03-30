@@ -12,11 +12,11 @@ def make_multiplier(multiplier: float) -> Callable[[float], float]:
     args: multiplier: float
     return: inner: (multiplier: float)
     """
-    def inner(multiplier: float) -> float:
+    def inner(n: float) -> float:
         """
         args: multiplier: float
         return: x: float
         """
-        x: float = (multiplier * multiplier)
+        x: float = (n * multiplier)
         return (x)
     return inner
