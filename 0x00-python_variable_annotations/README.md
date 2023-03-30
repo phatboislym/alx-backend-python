@@ -17,3 +17,4 @@
 
 - [10. Duck typing - first element of a sequence](100-safe_first_element.py)
 - [11. More involved type annotations](101-safely_get_value.py)
+- [12. Type Checking](102-type_checking.py)
