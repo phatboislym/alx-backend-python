@@ -8,6 +8,7 @@ returns random delay
 uses the random module
 """
 
+import asyncio
 from asyncio import sleep
 from random import uniform
 
