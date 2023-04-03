@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 module for a function `measure_time`
 takes two integers, n and max_delay as arguments
