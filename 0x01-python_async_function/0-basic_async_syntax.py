@@ -16,6 +16,6 @@ async def wait_random(max_delay: int = 10) -> float:
     args: max_delay: int
     return: random_delay: float
     """
-    random_delay = uniform(0.0, (max_delay + 0.1))
+    random_delay = uniform(0.0, max_delay)
     await sleep(random_delay)
     return (random_delay)
