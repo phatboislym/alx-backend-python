@@ -9,11 +9,11 @@ import task_wait_random from 3-tasks.py
 """
 
 from asyncio import sleep
-from typing import Any, List
+from typing import List
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int = 10) -> List[Any]:
+async def task_wait_n(n: int, max_delay: int = 10) -> List[float]:
     """
     args: n: int, max_delay: int
     return: list_delay: List[Any]
