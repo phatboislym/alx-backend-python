@@ -7,11 +7,11 @@ returns a asyncio.Task
 import wait_random from 0-basic_async_syntax
 """
 
-from asyncio import create_task
+from asyncio import create_task, Task
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def task_wait_random(max_delay: int):
+def task_wait_random(max_delay: int) -> Task:
     """
     args: max_delay: int
     return: task: asyncio.Task
