@@ -8,7 +8,7 @@ returns random delay
 uses the random module
 """
 
-from asyncio import sleep
+import asyncio
 from random import uniform
 
 
@@ -18,5 +18,5 @@ async def wait_random(max_delay: int = 10) -> float:
     return: random_delay: float
     """
     random_delay = uniform(0, max_delay)
-    await sleep(random_delay)
+    await asyncio.sleep(random_delay)
     return (random_delay)
