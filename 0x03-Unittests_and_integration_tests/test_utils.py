@@ -6,7 +6,7 @@ contains a `TestAccessNestedMap` class that inherits from unittest.TestCase
 """
 
 from parameterized import parameterized
-from typing import Any, Mapping, Sequence, Union
+from typing import Mapping, Sequence, Union
 from unittest import TestCase
 from utils import access_nested_map
 
@@ -15,6 +15,7 @@ class TestAccessNestedMap(TestCase):
     """
     test class for the access_nested_map function
     methods:    TestAccessNestedMap.test_access_nested_map
+                TestAccessNestedMap.test_access_nested_map_exception
     """
 
     @parameterized.expand([
@@ -23,7 +24,7 @@ class TestAccessNestedMap(TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map: Mapping, path: Sequence,
-                               expected_result: Union[int, str, dict, list]):
+                               expected_result: Union[int, str, dict, list]) -> None:
         """
         args:   self
                 nested_map: Mapping
@@ -32,3 +33,18 @@ class TestAccessNestedMap(TestCase):
         return: None
         """
         self.assertEqual(access_nested_map(nested_map, path), expected_result)
+
+    @parameterized.expand([
+        ({}, ("a",)),
+        ({"a": 1}, ("a", "b"))
+    ])
+    def test_access_nested_map_exception(self, nested_map, path) -> None:
+        """
+        args:   self
+                nested_map: Mapping
+                path: Sequence
+        return: None
+        """
+        with self.assertRaises(KeyError) as context:
+            access_nested_map(nested_map, path)
+        self.assertEqual(str(context.exception), path[-1])
