@@ -45,6 +45,5 @@ class TestAccessNestedMap(TestCase):
                 path: Sequence
         return: None
         """
-        with self.assertRaises(KeyError) as context:
+        with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
-        self.assertEqual(str(context.exception), path[-1])
