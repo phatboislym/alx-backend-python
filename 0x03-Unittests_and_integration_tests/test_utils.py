@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 
 """
-module for a test suite for the access_nested_map function
-contains a `TestAccessNestedMap` class that inherits from unittest.TestCase
+module for a test suite for the utils module
+classes:
+    `TestAccessNestedMap`
+    `TestGetJson`
+    `TestMemoize`
 """
 
 from parameterized import parameterized
 from typing import Mapping, Sequence, Union
 from unittest import TestCase
 from unittest.mock import MagicMock, Mock as mock, patch
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(TestCase):
@@ -81,3 +84,42 @@ class TestGetJson(TestCase):
         response = get_json(test_url)
         mock_get.assert_called_once_with(test_url)
         self.assertEqual(response, test_payload)
+
+
+class TestMemoize(TestCase):
+    """
+    TestMemoize class
+    methods:    test_memoize
+    """
+
+    def test_memoize(self) -> None:
+        """
+        args:   self
+        return: None
+        """
+        class TestClass:
+            """
+            TestClass class
+            """
+
+            def a_method(self):
+                """
+                a_method method
+                """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """
+                a_property method
+                """
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock_method:
+            test_case = TestClass()
+            result1 = test_case.a_property()
+            result2 = test_case.a_property()
+
+            self.assertEqual(result1, 42)
+            self.assertEqual(result2, 42)
+            mock_method.assert_called_once()
